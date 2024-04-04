@@ -35,6 +35,7 @@ rolando llega al castillo de piedra de nuevo(deja el collar, con lo cual ahora e
 }
 
 test "posee en total" {
+	
 	rolando.agarrar(espadaDelDestino)
 	rolando.agarrar(collarDivino)
 	rolando.irAlHogar()
@@ -45,8 +46,23 @@ test "posee en total" {
 	assert.notThat(rolando.posee(libroDeHechizos))
 }
 
-
-
-
-
-
+test "rolando encuentra la espada del destino (la agarra)
+rolando encuentra el libro de hechizos (la agarra)
+rolando encuentra el collar divino (no lo agarra, ya que tiene la espada y el libro encima y su capacidad es de 2)
+rolando llega al castillo de piedra (deja en el castillo la espada y el libro de hechizos)
+rolando encuentra la armadura de acero valyrio (la agarra)
+rolando encuentra el collar divino (ahora si lo puede agarrar, ya que liberó espacio)"{
+	
+	rolando.agarrar(espadaDelDestino)
+	rolando.agarrar(libroDeHechizos)
+	rolando.agarrar(collarDivino)
+	rolando.irAlHogar()
+	rolando.agarrar(armaduraDeAceroValyrio)
+	rolando.agarrar(collarDivino)
+	//assert.equals([espadaDelDestino,libroDeHechizos,collarDivino,armaduraDeAceroValyrio,collarDivino], rolando.historialDeArtefactos())
+	assert.equals(espadaDelDestino,rolando.historialDeArtefactos().get(0))
+	assert.equals(libroDeHechizos,rolando.historialDeArtefactos().get(1))
+	assert.equals(collarDivino,rolando.historialDeArtefactos().get(2))
+	assert.equals(armaduraDeAceroValyrio,rolando.historialDeArtefactos().get(3))
+	assert.equals(collarDivino,rolando.historialDeArtefactos().get(4))
+}
